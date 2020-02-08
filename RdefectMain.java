@@ -10,33 +10,33 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class RdefectMain {
 
     long startTime = System.currentTimeMillis();
-    HashMap<String, Integer> tokens = new HashMap<String, Integer>();
 
 
     // Throws an exception if the file passed is empty
-    public static void main(String[] args) throws
-            IOException, ClassNotFoundException {
+    public static void main(String[] args)
+            throws IOException, ClassNotFoundException {
 
 
         //Pass in Tokens
+        Tokens tokengenerator = new Tokens();
 
         try {
-            Tokens tokengenerator = new Tokens();
             //TODO itemize these files in some sort of a list and feed them to the file reader
-            String tokentype = "ror";
-            tokengenerator.add(new File("tokens/" + tokentype + ".csv"));
+            String tokenType = "ror";
+            tokengenerator.add(new File("tokens/" + tokenType + ".csv"));
+
         } catch (Exception e) {
             //  Block of code to handle errors
             System.err.println("Token file load error");
         }
+
 
 
         //TODO: Generate mml file
@@ -45,11 +45,23 @@ public class RdefectMain {
         String tokenType = "test";
 
         //1- Add the original tokens to the list
+        //read the tokens from the token map list
+        //TODO Consider moving to a its own constructor/interface
+        HashMap<String, ArrayList<String>> tokensKeeper = new HashMap<String, ArrayList<String>>();
+
+        //TODO replace with stream once finalized
+        for (int k = 0; k < tokengenerator.size(); ++k) {
+        ArrayList<String> convertedList = new ArrayList<String>();
+         tokensKeeper.put(tokengenerator.get(k), convertedList);
+
+        }
+
 
         //2- Add the mutated tokens
+        //for each token add the related tokens in the sublist
 
         //3- output the mml file
-        List<String> mmlList = Arrays.asList();
+        ArrayList<String> mmlList = new ArrayList<String>();
 
         //start of the section
         mmlList.add("targetOp {");

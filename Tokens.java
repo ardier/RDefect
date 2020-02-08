@@ -45,6 +45,7 @@ public class Tokens<T> implements TokenInterface<T> {
     public String get(int key){
         return tokensMap.get(key);
     }
+    public int size() {return tokensMap.size(); }
 
 
 
