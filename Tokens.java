@@ -29,7 +29,7 @@ public class Tokens<T> implements TokenInterface<T> {
         {
 
             String tokener = sc.next();
-            System.out.print(tokener);  //find and returns the next complete token from this scanner
+            System.out.println("Tokens "+tokener);  //find and returns the next complete token from this scanner
             tokensMap.put(index, tokener);
             ++index;
         }

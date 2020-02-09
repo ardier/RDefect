@@ -1,14 +1,9 @@
+import java.io.File;
 import java.util.NoSuchElementException;
-import java.util.ArrayList;
-import java.util.*;
-import java.io.*;
-import java.util.Scanner;
-import java.util.Map;
+
 
 /**
- * Priority queue where objects have a priority that is provided extrinsically,
- * i.e., priorities are supplied as an argument during insertion and can be changed
- * using the changePriority method. Cannot contain duplicate items.
+ *
  */
 public interface TokenInterface<T> {
 

@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 
 public class RdefectMain {
@@ -39,6 +40,12 @@ public class RdefectMain {
 
 
 
+
+
+
+
+
+
         //TODO: Generate mml file
         //MML generator. Might be moved to its own class
         int mmlIndex = 0;
@@ -46,19 +53,47 @@ public class RdefectMain {
 
         //1- Add the original tokens to the list
         //read the tokens from the token map list
-        //TODO Consider moving to a its own constructor/interface
-        HashMap<String, ArrayList<String>> tokensKeeper = new HashMap<String, ArrayList<String>>();
+        //TODO FIX the Mutator
+        HashMap<String, ArrayList<String>> mutantsKeeper = new HashMap<String, ArrayList<String>>();
+        ArrayList<String> mutantShortlist = new ArrayList<String>();
 
-        //TODO replace with stream once finalized
-        for (int k = 0; k < tokengenerator.size(); ++k) {
-        ArrayList<String> convertedList = new ArrayList<String>();
-         tokensKeeper.put(tokengenerator.get(k), convertedList);
 
+
+        //adding mutants for those tokens
+        //TODO make this for all the mutants
+        File scanner = new File("mutants/"+tokengenerator.get(0)+".csv");
+
+        //parsing a CSV file into Scanner class constructor
+        //TODO enable multiple CSV files
+        Scanner sc = new Scanner((scanner));
+        sc.useDelimiter(";");   //sets the delimiter pattern
+        int index = 0;
+        while (sc.hasNext())  //returns a boolean value
+        {
+
+            String mutant = sc.next();
+            System.out.println("mutants: "+ mutant);  //find and returns the next complete token from this scanner
+            //make sure this is the correct syntax
+            mutantShortlist.add(mutant);
+            ++index;
         }
 
+        sc.close();
+        //closes the scanner
 
-        //2- Add the mutated tokens
-        //for each token add the related tokens in the sublist
+
+        //add mutants to list with their corresponding tokens
+
+        mutantsKeeper.put(tokengenerator.get(0), mutantShortlist);
+
+
+
+
+
+
+        System.out.print("Total mutants add for " + tokengenerator.get(0) + " token ");
+        System.out.println(mutantsKeeper.get(tokengenerator.get(0)).size());
+
 
         //3- output the mml file
         ArrayList<String> mmlList = new ArrayList<String>();
@@ -110,8 +145,14 @@ public class RdefectMain {
 
 
 
+
+
+
        }
-        
-        
+
+
+
+
+
 } 
     
