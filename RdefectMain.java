@@ -71,10 +71,10 @@ public class RdefectMain {
         while (sc.hasNext())  //returns a boolean value
         {
 
-            String mutant = sc.next();
-            System.out.println("mutants: "+ mutant);  //find and returns the next complete token from this scanner
+            mutantShortlist.add(sc.next());
+            System.out.println("mutants: "+ mutantShortlist.get(index));  //find and returns the next complete token from this scanner
             //make sure this is the correct syntax
-            mutantShortlist.add(mutant);
+
             ++index;
         }
 
@@ -83,12 +83,7 @@ public class RdefectMain {
 
 
         //add mutants to list with their corresponding tokens
-
         mutantsKeeper.put(tokengenerator.get(0), mutantShortlist);
-
-
-
-
 
 
         System.out.print("Total mutants add for " + tokengenerator.get(0) + " token ");
@@ -124,7 +119,7 @@ public class RdefectMain {
         //TODO replace with output generator
         String st; 
             while ((st = br.readLine()) != null) {
-                System.out.println(st); 
+//                System.out.println(st);
                 if (st.contains("usage")){
                     System.out.println("bingo"); 
                 }

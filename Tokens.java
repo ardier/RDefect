@@ -31,9 +31,9 @@ public class Tokens<T> implements TokenInterface<T> {
             String tokener = sc.next();
             System.out.println("Tokens "+tokener);  //find and returns the next complete token from this scanner
             tokensMap.put(index, tokener);
-            ++index;
+            index++;
         }
-        System.out.println(tokensMap.size());
+        System.out.println("Tokens size: " + tokensMap.size() + tokensMap);
         sc.close();
         //closes the scanner
 
