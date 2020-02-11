@@ -39,17 +39,10 @@ public class RdefectMain {
         }
 
 
-
-
-
-
-
-
-
         //TODO: Generate mml file
         //MML generator. Might be moved to its own class
-        int mmlIndex = 0;
-        String tokenType = "test";
+        var mmlIndex = 0;
+        var tokenType = "test";
 
         //1- Add the original tokens to the list
         //read the tokens from the token map list
@@ -61,13 +54,13 @@ public class RdefectMain {
 
         //adding mutants for those tokens
         //TODO make this for all the mutants
-        File scanner = new File("mutants/"+tokengenerator.get(0)+".csv");
+        var scanner = new File("mutants/"+tokengenerator.get(0)+".csv");
 
         //parsing a CSV file into Scanner class constructor
         //TODO enable multiple CSV files
-        Scanner sc = new Scanner((scanner));
+        var sc = new Scanner((scanner));
         sc.useDelimiter(";");   //sets the delimiter pattern
-        int index = 0;
+        var index = 0;
         while (sc.hasNext())  //returns a boolean value
         {
 
@@ -112,9 +105,9 @@ public class RdefectMain {
 
 
         // Printing the first few lines to make sure the file is passed in
-        File file = new File(args[0]); 
+        var file = new File(args[0]);
   
-        BufferedReader br = new BufferedReader(new FileReader(file)); 
+        var br = new BufferedReader(new FileReader(file));
 
         //TODO replace with output generator
         String st; 
@@ -130,17 +123,6 @@ public class RdefectMain {
         //TODO mutate the file using the mml file (may have to be done without major)
 
         //TODO generate training and test sets for ML modelling using a dominator table
-
-
-
-
-
-
-
-
-
-
-
 
 
        }
